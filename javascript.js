@@ -20,11 +20,11 @@ function xmlParser(data) {
 		var src = $(kitteh).find("url").text();
 		var kitId = $(kitteh).find("id").text();
 		var back = '<br><a class="ui-btn" href="back" data-rel="back">go back</a>';
-
+		
 		// console.log(name);
 
 
-		$("#myList").append('<li><a href="#' + kitId +'">' + name + '</a></li>');
+		$("#myList").append('<li><a href="#' + kitId +'">' + name + '</a></li>').listview('refresh');
 		$("#parentDiv").append(
 			'<div data-role="page" id="' + kitId + '">' +
 			'<div data-role="content"><img src="' + src + '">' +  '</div>' +
@@ -32,3 +32,6 @@ function xmlParser(data) {
 			'</div>');
 	});
 }
+
+
+
