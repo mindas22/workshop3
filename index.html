@@ -5,11 +5,13 @@
   <title>jQuery Mobile page</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
   <link rel="stylesheet" href="themes/theme1.min.css" />
   <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
   <script src="javascript.js"></script>
 
 </head>
@@ -21,11 +23,11 @@
 	<h1>The list</h1>
 	</div>
 
-	<div data-role="content">
+	<div class="ui-content" role="main">
 	
 		<div class="content-primary">	
 			<div data-demo-html="true">
-				<ul data-role="listview" data-filter="true" id="myList">
+				<ul data-role="listview" data-filter="true" id="myList" data-inset="true">
 					<li><a href="#pagetwo">Page two</a></li>
 					
 				</ul>
@@ -44,7 +46,7 @@
 	<h1>This is page Two</h1>
 	</div>
 
-	<div data-role="content">
+	<div class="ui-content" role="main">
 	<a href="#pageone" data-transition="flip">Go to Page one</a>
 	
 	<p> Some Content. from page two </p>
