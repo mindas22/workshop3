@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LolCatz>
+<kitteh>
+	<id>1</id>
+	<name>Ceiling Cat</name>
+	<url>https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg</url>
+</kitteh>
+
+<kitteh>
+	<id>2</id>
+	<name>Basement Cat</name>
+	<url>https://farm4.staticflickr.com/3428/3742729634_193f1c511f_n.jpg</url>
+</kitteh>
+
+
+<kitteh>
+	<id>3</id>
+	<name>Monorail Cat</name>
+	<url>https://farm1.staticflickr.com/169/442686039_6ccba8a06c_z.jpg</url>
+</kitteh>
+
+<kitteh>
+	<id>4</id>
+	<name>Laser Kitteh</name>
+	<url>https://farm1.staticflickr.com/134/328202856_5330fd134a_z.jpg</url>
+</kitteh>
+</LolCatz>
