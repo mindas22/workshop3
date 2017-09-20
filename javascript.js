@@ -25,12 +25,10 @@ function xmlParser(data) {
 
 
 		$("#myList").append('<li><a href="#' + kitId +'">' + name + '</a></li>');
-		$("#parentDiv").append('<div data-role="page" id="' + kitId + '">' +
-			'<div data-role="content"><img src="' + src + '">' + back + '</div>' +
-'<div data-role="footer">' + 
-	'<h1>Footer for page ' + name + '</h1>' +  
-	'</div>' +
-
+		$("#parentDiv").append(
+			'<div data-role="page" id="' + kitId + '">' +
+			'<div data-role="content"><img src="' + src + '">' +  '</div>' +
+			'<div data-role="footer">' + '<h1>Footer for page ' + name + '</h1>' +  back + '</div>' +
 			'</div>');
 	});
 }
