@@ -24,13 +24,13 @@ function xmlParser(data) {
 		// console.log(name);
 
 
-		$("#myList").append('<li><a data-transition="flip" href="#' + kitId +'">' + name + '</a></li>');
-		$("#parentDiv").append('<div data-role="page" id="' + kitId + '">' +
-			'<div data-role="content"><img src="' + src + '">' + back + '</div>' +
-'<div data-role="footer">' + 
-	'<h1>Footer for page ' + name + '</h1>' +  
-	'</div>' +
+		$("#myList").append('<li><a href="#' + kitId +'">' + name + '</a></li>');
+		// $("#parentDiv").append('<div data-role="page" id="' + kitId + '">' +
+			// '<div data-role="content"><img src="' + src + '">' + back + '</div>' +
+// '<div data-role="footer">' + 
+// 	'<h1>Footer for page ' + name + '</h1>' +  
+// 	'</div>' +
 
-			'</div>');
+			// '</div>');
 	});
 }
