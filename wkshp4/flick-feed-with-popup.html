@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Workshop 4 Ex 2 - Flickr Feed - jQuery.getJSON Flickr</title>
+    
+    <link rel="stylesheet" href="themes/theme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+    
+    <div data-role="page" data-url="/webelevate/mwa/lab4/wkshp4/flick-feed-with-popup.html" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" style="min-height: 1366px;">
+        
+    Flickr Search <input type="text" id="searchbox" value="cat"> <button>Go</button>
+    
+    <div id="images"></div>
+    <div id="popups"></div>
+
+    </div>
+    
+    
+    <script>
+    
+        /**** Exercise 1 ****/
+        
+        $(document).ready(function(){
+            $("button").click(function(){
+                
+                var searchTerm = $('input:text').val(); 
+                //console.log(searchTerm);
+                
+                $("#images").html(""); //clear any previously generated content from the images div
+                $("#popups").html(""); //clear any previously generated content from the images div
+                
+                var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+                $.getJSON(flickerAPI, {
+                    tags: searchTerm,
+                    tagmode: "any",
+                    format: "json"
+                })
+                .done(function(data) {
+                    $.each(data.items, function(i, item) {
+                        
+                        $("<img>").attr("src", item.media.m).attr("id", "photo" + i).appendTo("#images").wrap("<a href='#popup" + i +"' data-rel='popup'></a>");
+                        $("<div>").attr("data-role", "popup").attr("id", "popup" + i).html("<img src=" + item.media.m +">").appendTo("#popups");
+
+                        if (i === 3) {
+                            return false;
+                        }
+                        ;
+                    });
+                });
+                
+            });
+        });
+ 
+    </script>
+
+    <!--- Working Popup Code For Reference -->
+    <!--<div id="thePopups">
+        
+            <a href="#photo0" data-rel="popup">Open Popup 0</a> 
+            <a href="#photo1" data-rel="popup">Open Popup 1</a>
+
+            <div data-role="popup" id="photo0">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg">
+            </div>
+
+            <div data-role="popup" id="photo1">
+                <img src="http://www.drodd.com/images16/lolcats27.jpeg">
+            </div>
+
+        </div>-->
+</body>
+
+</html>

@@ -47,6 +47,15 @@
 
 	<div class="ui-content" role="main">
 	<a href="#pageone" data-transition="flip">Go to Page one</a><br>
+
+	<div id="images"></div>
+		
+  	<input type="text" value="canon" placeholder="search" />
+
+
+	<div>
+    	<button>search</button>
+  	</div>
 	
 	<a href="#popupParis" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="./img/paris.jpg" alt="Paris, France" style="width:30%"></a>
 <a href="#popupSydney" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="./img/sydney.jpg" alt="Sydney, Australia" style="width:30%"></a>
@@ -69,5 +78,33 @@
 </div>
 
 </div>
+<script type="text/javascript">
+		$("button").click(function(){
+ 
+    var inputValue = $("input:text").val();
+
+    $("#images").html("");
+
+	(function(){
+		var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+		$.getJSON( flickrAPI, {
+			tags: inputValue,
+			tagmode: "any",
+			format: "json"
+		})
+	
+	.done(function( data ) {
+		$.each( data.items, function( i, item ) {
+			$( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+			if ( i === 2) {
+				return false;
+			}
+		});
+	});
+	})();
+});
+</script>
+
 </body>
 </html>
