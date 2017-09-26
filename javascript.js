@@ -32,6 +32,3 @@ function xmlParser(data) {
 			'</div>');
 	});
 }
-
-
-
