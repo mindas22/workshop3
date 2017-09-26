@@ -8,10 +8,10 @@
     
     <link rel="stylesheet" href="themes/theme.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
     
-	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 </head>
 
@@ -40,7 +40,7 @@
                 $("#images").html(""); //clear any previously generated content from the images div
                 $("#popups").html(""); //clear any previously generated content from the images div
                 
-                var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+                var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
                 $.getJSON(flickerAPI, {
                     tags: searchTerm,
                     tagmode: "any",
@@ -75,7 +75,7 @@
             </div>
 
             <div data-role="popup" id="photo1">
-                <img src="http://www.drodd.com/images16/lolcats27.jpeg">
+                <img src="https://www.drodd.com/images16/lolcats27.jpeg">
             </div>
 
         </div>-->
