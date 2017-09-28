@@ -20,40 +20,41 @@
 <div id="parentDiv">
 <div data-role="page" id="pageone">
 	<div data-role="header">
-		<h1>The list</h1>
+		<h2>';--have i been pwned?</h2>
 	</div>
 
 	<div class="ui-content" role="main">
 	
 		<div class="content-primary">	
 			
-
-		  	<input id="account" type="text" value="" />
+			<h4>Check if you have an account that has been compromised in a data breach</h4>
+			<label for="account">Enter email address or username</label>
+		  	<input id="account" type="text" value=""  />
 		
 			<div>
     			<button id="search">search</button>
   			</div>
 
   			<br>
+  			<div id="explain"></div>
 
   			<div data-demo-html="true">
 				<ul data-role="listview" id="myList">
 				</ul>
 			</div>
-
-
+		</div> <!-- /primary -->
+	</div> <!-- /main role -->
+		<div data-role="footer">
+			<h1>Footer for page one</h1>
 		</div>
-	</div>
-</div>
+</div> <!-- / role page -->
 
-	<div data-role="footer">
-		<h1>Footer for page one</h1>
-	</div>
-</div>
+
+</div><!--  /parent div -->
 
 
 
-</div>
+
 <script type="text/javascript">
 		$("#search").click(function(){
  
@@ -61,24 +62,34 @@
 
     var haveibeenpwnedAPI = "https://haveibeenpwned.com/api/v2/breachedaccount/" + account;
 
-    var back = '<br><a class="ui-btn" href="back" data-rel="back">go back</a>';
+    
     $("#myList").html("");
+    $("#explain").html("");
 
 
 		$.getJSON(haveibeenpwnedAPI, function(data) {
+
+			
+										
 			for (var i = 0; i < data.length;  i++) {
+
+
 
 				$("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Title + '</a></li>').listview('refresh');
 				$("#parentDiv").append(
 			'<div data-role="page" id="' + data[i].Name + '">' +
-			'<div data-role="content">' +
-			'<div data-role="header">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
+			'<div role="main" class="ui-content">' +
+			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<h2>' + data[i].Title + '</h2>' +
-			'<p>Breach date:' + data[i].BreachDate + "</p>" +
+			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
 			'<p>' + data[i].Description + "</p>" +
-			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1>' +  back + '</div>' +
+			'<p><strong>Compromised data: </strong>' + data[i].DataClasses + "</p>" +
+			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
 			}
+
+				$("#explain").append('<p><strong>' + data.length + ' Breaches you were pwned in</strong></p>' +
+				'<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly. Review the types of data that were compromised (email addresses, passwords, credit cards etc.) and take appropriate action, such as changing passwords.</p><br>');
 		
 		})
 		
