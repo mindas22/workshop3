@@ -29,7 +29,7 @@
 			
 			<h4>Check if you have an account that has been compromised in a data breach</h4>
 			<label for="account">Enter email address or username</label>
-		  	<input id="account" type="text" value=""  />
+		  	<input id="account" type="text" value="" placeholder="email address or username" />
 		
 			<div>
     			<button id="search">search</button>
@@ -81,6 +81,7 @@
 			'<div role="main" class="ui-content">' +
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<h2>' + data[i].Title + '</h2>' +
+			'<p><img src="https://haveibeenpwned.com/Content/Images/PwnedLogos/' + data[i].Name + '.' + data[i].LogoType + '</img> <br>' + data[i].Description + "</p>" +
 			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
 			'<p>' + data[i].Description + "</p>" +
 			'<p><strong>Compromised data: </strong>' + data[i].DataClasses + "</p>" +
