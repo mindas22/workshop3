@@ -41,7 +41,7 @@
   			<div id="explain"></div>
 
   			<div data-demo-html="true">
-				<ul data-role="listview" data-filter="true" data-autodividers="true" data-filter-reveal="true" id="myList">
+				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-autodividers="true" data-filter-reveal="true" id="myList">
 				</ul>
 			</div>
 		</div> <!-- /primary -->
@@ -61,6 +61,7 @@
 
 $( document ).ready(function() {
 
+
 var urlForJSONfile = "listofsites.json";
 
 
@@ -70,7 +71,7 @@ $.getJSON( urlForJSONfile, function( data ) {
 
 for (var i = 0; i < data.length;  i++) {
 
-$("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">' + data[i].Name + '</a></li>').listview('refresh');
+$("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">' + data[i].Name + ' - ' + data[i].Domain + '</a></li>').listview('refresh');
 
 				$("#parentDiv").append(
 			'<div data-role="page" id="' + data[i].Name + '">' +
@@ -86,12 +87,9 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 
 			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
-
  
 	}
-	$("#total").append('<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly. Review the types of data that were compromised (email addresses, passwords, credit cards etc.) and take appropriate action, such as changing passwords.</p> <p>at the moment there are <span class="red">' + data.length + '</span> websites in the list.</p> ')
-
-
+	$("#total").append('<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly.</p> <p>at the moment there are <span class="red">' + data.length + '</span> websites in the list.</p> ')
 
 });		
 
