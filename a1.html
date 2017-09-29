@@ -31,19 +31,14 @@
 	
 		<div class="content-primary">	
 			
-			<h4>Check if you have an account that has been compromised in a data breach</h4>
-			<label for="account">Enter email address or username</label>
-		  	<input id="account" type="text" value="" placeholder="email address or username" />
+			<h4>Check the website if it was compromised in a data breach</h4>
 		
-			<div>
-    			<button class="ui-btn ui-icon-search   ui-btn-icon-left" id="search">search</button>
-  			</div>
 
   			<br>
   			<div id="explain"></div>
 
   			<div data-demo-html="true">
-				<ul data-role="listview" id="myList">
+				<ul data-role="listview" data-filter="true" id="myList">
 				</ul>
 			</div>
 		</div> <!-- /primary -->
@@ -60,22 +55,15 @@
 
 
 <script type="text/javascript">
-		$("#search").click(function(){
- 
-    var account = $("#account").val();
-
-    var haveibeenpwnedAPI = "https://haveibeenpwned.com/api/v2/breachedaccount/" + account;
-
-    
-    $("#myList").html("");
-    $("#explain").html("");
 
 
-		$.getJSON(haveibeenpwnedAPI, function(data) {
-										
-			for (var i = 0; i < data.length;  i++) {
+$.getJSON( "listofsites.json", function( data ) {
 
-				$("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Title + '</a></li>').listview('refresh');
+
+for (var i = 0; i < data.length;  i++) {
+
+$("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Name + '</a></li>').listview('refresh');
+
 				$("#parentDiv").append(
 			'<div data-role="page" id="' + data[i].Name + '">' +
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
@@ -90,17 +78,15 @@
 
 			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
-			}
-
-				$("#explain").append('<p><strong>' + data.length + ' Breaches you were pwned in</strong></p>' +
-				'<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly. Review the types of data that were compromised (email addresses, passwords, credit cards etc.) and take appropriate action, such as changing passwords.</p><br>');
-		
-		})
-
-	});
 
 
 
+}
+
+ 
+
+
+});		
 
 		
 </script>
