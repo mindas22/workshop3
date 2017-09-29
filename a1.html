@@ -59,7 +59,6 @@
 
 $.getJSON( "listofsites.json", function( data ) {
 
-
 for (var i = 0; i < data.length;  i++) {
 
 $("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Name + '</a></li>').listview('refresh');
@@ -69,7 +68,7 @@ $("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Name + '</a>
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<div role="main" class="ui-content">' +
 
-			'<p><img class="logo" src="https://haveibeenpwned.com/Content/Images/PwnedLogos/' + data[i].Name + '.' + data[i].LogoType + '"> <br>' + 
+			'<p><img class="logo" src="imgs/' + data[i].Name + '.' + data[i].LogoType + '"> <br>' + 
 			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
 			'<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
 
@@ -78,13 +77,8 @@ $("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Name + '</a>
 
 			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
-
-
-
-}
-
  
-
+	}
 
 });		
 
