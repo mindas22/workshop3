@@ -38,7 +38,7 @@
   			<div id="explain"></div>
 
   			<div data-demo-html="true">
-				<ul data-role="listview" data-filter="true" data-filter-reveal="true" id="myList">
+				<ul data-role="listview" data-filter="true" data-autodividers="true" data-filter-reveal="true" id="myList">
 				</ul>
 			</div>
 		</div> <!-- /primary -->
@@ -61,7 +61,7 @@ $.getJSON( "listofsites.json", function( data ) {
 
 for (var i = 0; i < data.length;  i++) {
 
-$("#myList").append('<li><a href="#' + data[i].Name +'">' + data[i].Name + '</a></li>').listview('refresh');
+$("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">' + data[i].Name + '</a></li>').listview('refresh');
 
 				$("#parentDiv").append(
 			'<div data-role="page" id="' + data[i].Name + '">' +
