@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <title>jQuery Mobile page</title>
+  <title>List of compromised websites</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,7 +32,7 @@
 		<div class="content-primary">	
 			
 			<h4>Check the website if it was compromised in a data breach</h4>
-		
+			<div id="total"></div>
 
   			<br>
   			<div id="explain"></div>
@@ -56,8 +56,12 @@
 
 <script type="text/javascript">
 
+var urlForJSONfile = "listofsites.json";
 
-$.getJSON( "listofsites.json", function( data ) {
+
+$.getJSON( urlForJSONfile, function( data ) {
+
+
 
 for (var i = 0; i < data.length;  i++) {
 
@@ -68,17 +72,19 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<div role="main" class="ui-content">' +
 
-			'<p><img class="logo" src="imgs/' + data[i].Name + '.' + data[i].LogoType + '"> <br>' + 
+			// '<p><img class="logo" src="imgs/' + data[i].Name + '.' + data[i].LogoType + '"> <br>' + 
 			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
 			'<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
 
 			'<p>' + data[i].Description + "</p>" +
-			'<p><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
+			'<p class="ui-mini"><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
 
 			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
+
  
 	}
+	$("#total").append('<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly. Review the types of data that were compromised (email addresses, passwords, credit cards etc.) and take appropriate action, such as changing passwords.</p> <p>at the moment there are ' + data.length + ' websites in the list.</p> ')
 
 });		
 
