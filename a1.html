@@ -14,11 +14,12 @@
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
   <!-- <script src="javascript.js"></script> -->
   <style type="text/css">
-  	/*.logo {
-  		max-width: 110px;
-  	}*/
   	.red {
   		color: red;
+  	}
+  	.ui-loader {
+  		position: absolute;
+  		top: 20px;
   	}
   </style>
 </head>
@@ -59,11 +60,20 @@
 
 <script type="text/javascript">
 
-$(document).ajaxStart(function() {
-    $.mobile.loading('show');
-});	
+
+	
 
 $( document ).ready(function() {
+
+
+$(document).ajaxStart(function() {
+    $.mobile.loading('show', {
+  text: "foo",
+  textVisible: true,
+  theme: "z",
+  html: ""
+    });
+});
 
 
 var urlForJSONfile = "listofsites.json";
