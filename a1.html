@@ -59,6 +59,10 @@
 
 <script type="text/javascript">
 
+$(document).ajaxStart(function() {
+    $.mobile.loading('show');
+});	
+
 $( document ).ready(function() {
 
 
@@ -94,6 +98,9 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 });		
 
 		});
+$(document).ajaxStop(function() {
+    $.mobile.loading('hide');
+});
 </script>
 
 </body>
