@@ -17,10 +17,7 @@
   	.red {
   		color: red;
   	}
-  	.ui-loader {
-  		position: absolute;
-  		top: 20px;
-  	}
+  
   </style>
 </head>
 <body>
@@ -29,9 +26,14 @@
 <div data-role="page" id="pageone">
 	<div data-role="header">
 		<h2>';--have i been pwned?</h2>
+		<a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left"></a>
 	</div>
 
 	<div class="ui-content" role="main">
+
+		  <div data-role="panel" data-display="push" class="panel left" id="myPanel">
+    Some content here
+  </div><!-- /panel -->
 	
 		<div class="content-primary">	
 			
