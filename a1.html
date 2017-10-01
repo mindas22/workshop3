@@ -121,13 +121,14 @@
 $( document ).ready(function() {
 
 // $(document).ajaxStart(function() {
-//     $.mobile.loading('show', {
-//   text: "foo",
-//   textVisible: true,
-//   theme: "z",
-//   html: ""
-//     });
-// });
+$(document).ajaxStart(function() {
+    $.mobile.loading('show', {
+  text: "foo",
+  textVisible: true,
+  theme: "z",
+  html: ""
+    });
+});
 
 
 var urlForJSONfile = "listofsites.json";
@@ -155,7 +156,8 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 
 			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
 			'</div>');
- 
+
+
 	}
 	$("#total").append('<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly.</p> <p>at the moment there are <span class="red">' + data.length + '</span> websites in the list.</p> ')
 
@@ -165,6 +167,7 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 $(document).ajaxStop(function() {
     $.mobile.loading('hide');
 });
+
 </script>
 
 </body>
