@@ -18,7 +18,7 @@
   		color: red;
   	}
   	.panel {
-  		max-width: 100px;
+  		max-width: 100%;
   	}
 
   </style>
@@ -26,20 +26,67 @@
 <body>
 
 <div id="parentDiv">
-<div data-role="page" id="pageone">
+<div data-role="page" class="ui-responsive-panel" id="pageone">
 	<div data-role="header">
 		<h2>';--have i been pwned?</h2>
-		<a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left"></a>
+		<a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left">Info</a>
 	</div>
+
+					<div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel" data-theme="a">
+
+					<ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+						<li data-icon="delete" style="background-color:#111;">
+							<a href="#" data-rel="close">Close menu</a>
+						</li>
+						<li data-filtertext="wai-aria voiceover accessibility screen reader">
+							<a href="../about/accessibility.html">Accessibility</a>
+						</li>
+						<li data-filtertext="accordions collapsible set collapsible-set collapsed">
+							<a href="../content/content-collapsible-set.html">Accordions</a>
+						</li>
+						<li data-filtertext="ajax navigation model">
+							<a href="../pages/page-navmodel.html">Ajax navigation model</a>
+						</li>
+						<li data-filtertext="anatomy of page viewport">
+							<a href="../pages/page-anatomy.html">Anatomy of a page</a>
+						</li>
+						<li data-filtertext="events api animationComplete transition css">
+							<a href="../api/events.html">Animation events</a>
+						</li>
+						<li data-filtertext="listview autodivider">
+							<a href="../lists/lists-autodividers.html">Automatic listview dividers</a>
+						</li>
+						<li data-filtertext="button link submit cancel image reset mini buttonmarkup enable disable">
+							<a href="../buttons/buttons-types.html">Buttons</a>
+						</li>
+						<li data-filtertext="button icon">
+							<a href="../buttons/buttons-icons.html">Button icons</a>
+						</li>
+						<li data-filtertext="data-prefetch loadpage domCache data-dom-cache size clear cleanup pagehide lazyload spinner loader">
+							<a href="../pages/page-cache.html">Caching pages</a>
+						</li>
+						<li data-filtertext="input forms multi select checkbox checks grouped horizontal toggle legend">
+							<a href="../forms/checkboxes/">Checkbox</a>
+						</li>
+						<li data-filtertext="button icon">
+							<a href="buttons/buttons-icons.html">Button icons</a>
+						</li>
+						<li data-filtertext="data-prefetch loadpage domCache data-dom-cache size clear cleanup pagehide lazyload spinner loader">
+							<a href="../pages/page-cache.html">Caching pages</a>
+						</li>
+						<li data-filtertext="input forms multi select checkbox checks grouped horizontal toggle legend">
+							<a href="../forms/checkboxes/">Checkbox</a>
+						</li>
+					</ul>
+
+					<!-- panel content goes here -->
+				</div><!-- /panel -->
 
 	<div class="ui-content" role="main">
 
-		  
-	
+		
 		<div class="content-primary">	
-			<div data-role="panel" data-display="push" class="panel left" id="myPanel">
-    This is panel content here. The question is what is this green on the left?
-  </div><!-- /panel -->
+			
 			
 			<h4>Check the website if it was compromised in a data breach</h4>
 			<div id="total"></div>
@@ -53,9 +100,13 @@
 			</div>
 		</div> <!-- /primary -->
 	</div> <!-- /main role -->
-		<div data-role="footer">
-			<h1>Created by M.L.</h1>
-		</div>
+	<div data-role="footer">
+		<h1>Created by M.L.</h1>
+	</div>
+
+
+
+
 </div> <!-- / role page -->
 
 
@@ -67,19 +118,16 @@
 <script type="text/javascript">
 
 
-	
-
 $( document ).ready(function() {
 
-
-$(document).ajaxStart(function() {
-    $.mobile.loading('show', {
-  text: "foo",
-  textVisible: true,
-  theme: "z",
-  html: ""
-    });
-});
+// $(document).ajaxStart(function() {
+//     $.mobile.loading('show', {
+//   text: "foo",
+//   textVisible: true,
+//   theme: "z",
+//   html: ""
+//     });
+// });
 
 
 var urlForJSONfile = "listofsites.json";
@@ -93,7 +141,7 @@ for (var i = 0; i < data.length;  i++) {
 
 $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">' + data[i].Name + ' - ' + data[i].Domain + '</a></li>').listview('refresh');
 
-				$("#parentDiv").append(
+			$("#parentDiv").append(
 			'<div data-role="page" id="' + data[i].Name + '">' +
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<div role="main" class="ui-content">' +
