@@ -13,19 +13,7 @@
 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="app.js"></script>
-    <style type="text/css">
-    	/*decided to put css here instead of separate file, less http request and css is not a lot here, other css customisations was made in themeroller and loaded above */
-        .red {
-            color: red;
-        }
-        p {
-        	text-align: center;
-        }
-        .colorDark {
-        	color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="themes/custom.css" />
 </head>
 
 <body>
@@ -39,17 +27,19 @@
 
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel">
 
-                <ul data-role="listview" data-theme="a" class="nav-search">
+                <ul data-role="listview" class="nav-search">
                     <li data-icon="delete">
-                        <a href="#" data-rel="close">Close menu</a>
+                        <a href="#" data-rel="close">Close Panel</a>
                     </li>
 
                 </ul>
                 <br>
                 <p>To use app, You can type: a in the search field.</p>
-                <p> This list is not full. This is only example. JSON file was created using  https://haveibeenpwned.com/ API and saved as local file.</p>
+
+                <h5>About</h5>
+                <p> This is not full list. This is only example. JSON file was created using  haveibeenpwned.com API and saved as local file.</p>
                 <!-- id="totalWebsites" number here is added dynamically  -->
-                <p>At the moment there are <span class="red" id="totalWebsites"></span> websites in the list.</p>
+                <p>At the moment there are <span class="red" id="totalWebsites"></span> websites in this app list.</p>
 
                 
             </div><!-- /panel -->
@@ -64,7 +54,7 @@
 
 
                     <div data-demo-html="true">
-                        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search... example: Adobe" data-autodividers="true" data-filter-reveal="true" id="myList">
+                        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search... example: Adobe" class="ui-listview-inset" data-autodividers="true" data-filter-reveal="true" id="myList">
                         </ul>
                     </div>
                 </div><!-- /content-primary -->
@@ -76,36 +66,7 @@
         </div><!-- / role page -->
     </div><!--  /parent div -->
 
-    <script type="text/javascript">
-        // $(document).ready(function() {
-
-        //     //here could be other url for JSON feed
-        //     var urlForJSONfile = "listofsites.json";
-
-        //     $.getJSON(urlForJSONfile, function(data) {
-
-        //         for (var i = 0; i < data.length; i++) {
-        //             //here we have dynamically generated list items for the listview
-        //             $("#myList").append('<li><a data-transition="slide" href="#' + data[i].Domain + '">' + data[i].Domain + '</a></li>').listview('refresh');
-        //             //here we have dynamically generated pages and appended to #parentDiv
-        //             $("#parentDiv").append(
-        //                 '<div data-role="page" id="' + data[i].Domain + '">' +
-        //                 '<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' +
-        //                 '<h1>' + data[i].Name + '</h1>' + '</div>' +
-        //                 '<div role="main" class="ui-content">' +
-        //                 '<p>Breach date: ' + data[i].BreachDate + "</p>" +
-        //                 '<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
-        //                 '<p>' + data[i].Description + "</p>" +
-        //                 '<p class="ui-mini"><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
-        //                 '<div data-role="footer"><h1>Created by M.L.</h1></div>' +
-        //                 '</div>');
-        //         }
-        //         //adding some info to main page 
-        //         $("#totalWebsites").append(data.length);
-        //     });
-
-        // });
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>

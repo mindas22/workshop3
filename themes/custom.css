@@ -1,0 +1,15 @@
+.red {
+	color: red;
+}
+p, h4 {
+	text-align: center;
+}
+.content-primary {
+	padding-bottom: 50px;
+}
+a.ui-link {
+    color: white;
+    text-decoration: underline;
+	text-decoration-style: dashed;
+    text-decoration-color: red;
+}
