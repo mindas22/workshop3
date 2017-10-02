@@ -22,7 +22,7 @@ console.log("let sta");
                         '<div data-role="footer"><h1>Created by M.L.</h1></div>' +
                         '</div>');
                 }
-                //adding some info to main page 
+                //adding total nuber of sites to the main app's page 
                 $("#totalWebsites").append(data.length);
             });
 
