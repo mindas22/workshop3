@@ -1,123 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  <title>List of compromised websites</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of compromised websites</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
-  <link rel="stylesheet" href="themes/theme1.min.css" />
-  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="themes/theme1.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
-  <!-- <script src="javascript.js"></script> -->
-  <style type="text/css">
-  	.red {
-  		color: red;
-  	}
-  </style>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <script src="javascript.js"></script> -->
+    <style type="text/css">
+    	/*decided to put css here instead of separate file, */
+        .red {
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
 
-<div id="parentDiv">
-<div data-role="page" class="ui-responsive-panel" id="pageone">
-	<div data-role="header">
-		<h2>';--have i been pwned?</h2>
-		<a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left">Info</a>
-	</div>
+    <div id="parentDiv">
+        <div data-role="page" class="ui-responsive-panel" id="pageone">
+            <div data-role="header">
+                <h2>Breached websites</h2>
+                <a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left">Info</a>
+            </div>
 
-					<div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel" data-theme="a">
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel">
 
-					<ul data-role="listview" data-theme="a" data-divider-theme="a" class="nav-search">
-						<li data-icon="delete" style="background-color:#111;">
-							<a href="#" data-rel="close">Close menu</a>
-						</li>
-						
-					</ul>
-					<br>
-					<p>To use it You can type: a </p>
-					<p> This list is not full. This is only example</p>
+                <ul data-role="listview" data-theme="a" class="nav-search">
+                    <li data-icon="delete">
+                        <a href="#" data-rel="close">Close menu</a>
+                    </li>
 
-					<!-- panel content goes here -->
-				</div><!-- /panel -->
+                </ul>
+                <br>
+                <p>To use app, You can type: a </p>
+                <p> This list is not full. This is only example. JSON file was created using  https://haveibeenpwned.com/ API and saved as local file.</p>
 
-	<div class="ui-content" role="main">
+                
+            </div><!-- /panel -->
 
-		
-		<div class="content-primary">	
-			
-			
-			<h4>Check if the website was compromised in a data breach</h4>
-			
-			<p>A "breach" is an incident where a site's data has been illegally accessed by hackers and then released publicly.</p> <p>at the moment there are <span class="red" id="total"></span> websites in the list.</p>
+            <div class="ui-content" role="main">
 
+                <div class="content-primary">
 
-  			<br>
+                    <h4>Check if the website was compromised in a data breach</h4>
 
-  			<div data-demo-html="true">
-				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-autodividers="true" data-filter-reveal="true" id="myList">
-				</ul>
-			</div>
-		</div> <!-- /primary -->
-	</div> <!-- /main role -->
-	<div data-role="footer">
-		<h1>Created by M.L.</h1>
-	</div>
+                    <p>A "breach" is an incident where a site's data has been illegally accessed by hackers and then released publicly.</p>
+                    <p>at the moment there are <span class="red" id="totalWebsites"></span> websites in the list.</p>
 
+                    <br>
 
+                    <div data-demo-html="true">
+                        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-autodividers="true" data-filter-reveal="true" id="myList">
+                        </ul>
+                    </div>
+                </div><!-- /content-primary -->
+            </div><!-- /role main -->
+            <div data-role="footer">
+                <h1>Created by M.L.</h1>
+            </div>
 
+        </div><!-- / role page -->
+    </div><!--  /parent div -->
 
-</div> <!-- / role page -->
-</div><!--  /parent div -->
+    <script type="text/javascript">
+        $(document).ready(function() {
 
+            //here could be other url for JSON feed
+            var urlForJSONfile = "listofsites.json";
 
+            $.getJSON(urlForJSONfile, function(data) {
 
+                for (var i = 0; i < data.length; i++) {
+                    //here we have dynamicaly generated list items for the listview
+                    $("#myList").append('<li><a data-transition="slide" href="#' + data[i].Domain + '">' + data[i].Domain + '</a></li>').listview('refresh');
+                    //here we have dynamicaly generated pages and appended to #parentDiv
+                    $("#parentDiv").append(
+                        '<div data-role="page" id="' + data[i].Domain + '">' +
+                        '<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' +
+                        '<h1>' + data[i].Name + '</h1>' + '</div>' +
+                        '<div role="main" class="ui-content">' +
+                        '<p>Breach date: ' + data[i].BreachDate + "</p>" +
+                        '<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
+                        '<p>' + data[i].Description + "</p>" +
+                        '<p class="ui-mini"><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
+                        '<div data-role="footer"><h1>Created by M.L.</h1></div>' +
+                        '</div>');
+                }
+                //outside of loop adding some info to main page
+                $("#totalWebsites").append(data.length);
+            });
 
-
-<script type="text/javascript">
-
-
-$( document ).ready(function() {
-
-
-var urlForJSONfile = "listofsites.json";
-
-
-$.getJSON( urlForJSONfile, function( data ) {
-
-
-
-for (var i = 0; i < data.length;  i++) {
-
-$("#myList").append('<li><a data-transition="slide" href="#' + data[i].Domain +'">' + data[i].Domain + '</a></li>').listview('refresh');
-
-			$("#parentDiv").append(
-			'<div data-role="page" id="' + data[i].Domain + '">' +
-			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
-			'<div role="main" class="ui-content">' +
-
-
-			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
-			'<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
-
-			'<p>' + data[i].Description + "</p>" +
-			'<p class="ui-mini"><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
-
-			'<div data-role="footer"><h1>Created by M.L.</h1></div>' +
-			'</div>');
-
-
-	}
-	$("#total").append( data.length)
-
-});		
-
-		});
-
-
-</script>
-
+        });
+    </script>
 </body>
+
 </html>
