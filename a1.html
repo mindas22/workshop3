@@ -18,9 +18,6 @@
   		color: red;
   	}
   	.panel {
-  		max-width: 100%;
-  	}
-
   </style>
 </head>
 <body>
@@ -34,50 +31,15 @@
 
 					<div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel" data-theme="a">
 
-					<ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+					<ul data-role="listview" data-theme="a" data-divider-theme="a" class="nav-search">
 						<li data-icon="delete" style="background-color:#111;">
 							<a href="#" data-rel="close">Close menu</a>
 						</li>
-						<li data-filtertext="wai-aria voiceover accessibility screen reader">
-							<a href="../about/accessibility.html">Accessibility</a>
-						</li>
-						<li data-filtertext="accordions collapsible set collapsible-set collapsed">
-							<a href="../content/content-collapsible-set.html">Accordions</a>
-						</li>
-						<li data-filtertext="ajax navigation model">
-							<a href="../pages/page-navmodel.html">Ajax navigation model</a>
-						</li>
-						<li data-filtertext="anatomy of page viewport">
-							<a href="../pages/page-anatomy.html">Anatomy of a page</a>
-						</li>
-						<li data-filtertext="events api animationComplete transition css">
-							<a href="../api/events.html">Animation events</a>
-						</li>
-						<li data-filtertext="listview autodivider">
-							<a href="../lists/lists-autodividers.html">Automatic listview dividers</a>
-						</li>
-						<li data-filtertext="button link submit cancel image reset mini buttonmarkup enable disable">
-							<a href="../buttons/buttons-types.html">Buttons</a>
-						</li>
-						<li data-filtertext="button icon">
-							<a href="../buttons/buttons-icons.html">Button icons</a>
-						</li>
-						<li data-filtertext="data-prefetch loadpage domCache data-dom-cache size clear cleanup pagehide lazyload spinner loader">
-							<a href="../pages/page-cache.html">Caching pages</a>
-						</li>
-						<li data-filtertext="input forms multi select checkbox checks grouped horizontal toggle legend">
-							<a href="../forms/checkboxes/">Checkbox</a>
-						</li>
-						<li data-filtertext="button icon">
-							<a href="buttons/buttons-icons.html">Button icons</a>
-						</li>
-						<li data-filtertext="data-prefetch loadpage domCache data-dom-cache size clear cleanup pagehide lazyload spinner loader">
-							<a href="../pages/page-cache.html">Caching pages</a>
-						</li>
-						<li data-filtertext="input forms multi select checkbox checks grouped horizontal toggle legend">
-							<a href="../forms/checkboxes/">Checkbox</a>
-						</li>
+						
 					</ul>
+					<br>
+					<p>To use it You can type: a </p>
+					<p> This list is not full. This is only example</p>
 
 					<!-- panel content goes here -->
 				</div><!-- /panel -->
@@ -88,11 +50,12 @@
 		<div class="content-primary">	
 			
 			
-			<h4>Check the website if it was compromised in a data breach</h4>
-			<div id="total"></div>
+			<h4>Check if the website was compromised in a data breach</h4>
+			
+			<p>A "breach" is an incident where a site's data has been illegally accessed by hackers and then released publicly.</p> <p>at the moment there are <span class="red" id="total"></span> websites in the list.</p>
+
 
   			<br>
-  			<div id="explain"></div>
 
   			<div data-demo-html="true">
 				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-autodividers="true" data-filter-reveal="true" id="myList">
@@ -108,9 +71,8 @@
 
 
 </div> <!-- / role page -->
-
-
 </div><!--  /parent div -->
+
 
 
 
@@ -119,16 +81,6 @@
 
 
 $( document ).ready(function() {
-
-// $(document).ajaxStart(function() {
-$(document).ajaxStart(function() {
-    $.mobile.loading('show', {
-  text: "foo",
-  textVisible: true,
-  theme: "z",
-  html: ""
-    });
-});
 
 
 var urlForJSONfile = "listofsites.json";
@@ -147,7 +99,7 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<div role="main" class="ui-content">' +
 
-			// '<p><img class="logo" src="imgs/' + data[i].Name + '.' + data[i].LogoType + '"> <br>' + 
+
 			'<p>Breach date: ' + data[i].BreachDate + "</p>" +
 			'<p>Breached accounts: ' + data[i].PwnCount + "</p>" +
 
@@ -159,14 +111,12 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 
 
 	}
-	$("#total").append('<p>A "breach" is an incident where a site\'s data has been illegally accessed by hackers and then released publicly.</p> <p>at the moment there are <span class="red">' + data.length + '</span> websites in the list.</p> ')
+	$("#total").append( data.length)
 
 });		
 
 		});
-$(document).ajaxStop(function() {
-    $.mobile.loading('hide');
-});
+
 
 </script>
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>jQuery Mobile page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="themes/theme1.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+
+</head>
+<body>
+	<div data-role="page" id="moviefilm">
+     <div data-role="header">
+        <h1>My page</h1> 
+    </div> 	
+         <div data-role="main" class="ui-content">
+         <ul data-role="listview" id="filmlist"></ul>
+         </div>
+    
+</div>
+
+
+<div data-role="page" id="headline">
+    <div data-theme="a" data-role="header">
+        <a href="#moviefilm" class="ui-btn-left" data-transition="slide" data-direction="reverse">Back</a>                        
+        <h3>
+            Movie Details
+        </h3>
+    </div>        
+    <div data-role="main" class="ui-content">
+        <h3 id="theMovieTitle"></h3>
+        <p>movie details go here</p>
+    </div>
+</div>    
+
+<script type="text/javascript">
+	$(document).on('pagebeforeshow', '#moviefilm', function(){
+
+    var data = {};
+    data.total = 5;
+    data.movies = [];
+    
+    for (var i=1; i<10; i++){
+        var movie = { "title": "movie " + i, "ratings": {"critics_score": i * 9}, "posters": {"thumbnail": "http://lorempixel.com/80/80/sports/" + i + "/"}};
+        
+        data.movies.push(movie);
+        
+    }
+    
+    searchCallback(data);
+    
+    //click handler to create new page
+    $("#filmlist").on("click", "li a", function(){          
+        var thetitle = $(this).find("h2").text();
+        $("#theMovieTitle").text(thetitle);        
+        $(":mobile-pagecontainer").pagecontainer( "change", "#headline", { transition: "slide" } );
+     });
+    
+
+
+});
+
+function searchCallback(data) {
+           $(document.body).append('Found ' + data.total + ' results for Top Box Office Earning Movie');
+           var movies = data.movies;
+    $("#filmlist").empty()
+           $.each(movies, function (index, movie) {
+                  $("#filmlist").append("<li><a><img src='" + movie.posters.thumbnail + "' /><h2>" + movie.title + "</h2>" + "<p>" + "Score: " + movie.ratings.critics_score + "%" + "</p></a></li>").listview().listview("refresh");
+           });
+}
+
+</script>
+
+</body>
+</html>
