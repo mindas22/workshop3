@@ -22,9 +22,8 @@ $(document).ready(function() {
                         '<div data-role="footer"><h1>Created by M.L.</h1></div>' +
                         '</div>');
                 }
-                //adding total nuber of sites to the main app's page 
+                //adding some info to main page 
                 $("#totalWebsites").append(data.length);
             });
 
         });
-console.log("lakksk");
