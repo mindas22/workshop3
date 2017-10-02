@@ -25,5 +25,4 @@ $(document).ready(function() {
                 //adding some info to main page 
                 $("#totalWebsites").append(data.length);
             });
-
         });
