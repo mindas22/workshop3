@@ -17,3 +17,7 @@ a.ui-link {
 	text-decoration-style: dashed;
     text-decoration-color: red;
 }
+
+#myPanel {
+	background-color: #fbcf9d;
+}

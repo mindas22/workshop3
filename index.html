@@ -1,110 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  <title>jQuery Mobile page</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of compromised websites</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
-  <link rel="stylesheet" href="themes/theme1.min.css" />
-  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="themes/theme1.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
-  <script src="javascript.js"></script>
-
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="themes/custom.css" />
 </head>
+
 <body>
 
-<div id="parentDiv">
-<div data-role="page" id="pageone">
-	<div data-role="header">
-	<h1>The list</h1>
-	</div>
+    <div id="parentDiv">
+        <div data-role="page" class="ui-responsive-panel" id="pageone">
+            <div data-role="header">
+                <h2>Breached websites</h2>
+                <a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-left">Info</a>
+            </div>
 
-	<div class="ui-content" role="main">
-	
-		<div class="content-primary">	
-			<div data-demo-html="true">
-				<ul data-role="listview" data-filter="true" id="myList">
-					<li><a href="#pagetwo">hardcoded page 2</a></li>
-				</ul>
-		
-			</div>
-		</div>
-	</div>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="myPanel">
 
-	<div data-role="footer">
-		<h1>Footer for page one</h1>
-	</div>
-</div>
+                <ul data-role="listview" class="nav-search">
+                    <li data-icon="delete">
+                        <a href="#" data-rel="close">Close Panel</a>
+                    </li>
 
-<div data-role="page" id="pagetwo">
-	<div data-role="header">
-	<h1>This is page Two</h1>
-	</div>
+                </ul>
+                <br>
+                <p>To use app, you can type for example "a" in the search field.</p>
 
-	<div class="ui-content" role="main">
-	<a href="#pageone" data-transition="flip">Go to Page one</a><br>
+                <p>This is not the full list. This is just example. JSON file was created using <a target="_blank" rel="external"  href="https://haveibeenpwned.com">haveibeenpwned.com</a> API and saved as a local file.</p>
+                <!-- id="totalWebsites" number here is added dynamically, see app.js file -->
+                <p>At the moment there are <span class="red" id="totalWebsites"></span> websites in this app's list.</p>
 
-	<div id="images"></div>
-		
-  	<input type="text" value="canon" placeholder="search" />
+                
+            </div><!-- /panel -->
+
+            <div class="ui-content" role="main">
+
+                <div class="content-primary">
+
+                    <h4>Check if the website was compromised in a data breach</h4>
+
+                    <p>A "breach" is an incident where a site's data has been illegally accessed by hackers and then released publicly.</p>
 
 
-	<div>
-    	<button>search</button>
-  	</div>
-	
-	<a href="#popupParis" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="./img/paris.jpg" alt="Paris, France" style="width:30%"></a>
-<a href="#popupSydney" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="./img/sydney.jpg" alt="Sydney, Australia" style="width:30%"></a>
-<a href="#popupNYC" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="./img/newyork.jpg" alt="New York, USA" style="width:30%"></a>
-<div data-role="popup" id="popupParis" data-overlay-theme="b" data-theme="b" data-corners="false">
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="./img/paris.jpg" style="max-height:512px;" alt="Paris, France">
-</div>
-<div data-role="popup" id="popupSydney" data-overlay-theme="b" data-theme="b" data-corners="false">
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="./img/sydney.jpg" style="max-height:512px;" alt="Sydney, Australia">
-</div>
-<div data-role="popup" id="popupNYC" data-overlay-theme="b" data-theme="b" data-corners="false">
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="./img/newyork.jpg" style="max-height:512px;" alt="New York, USA">
-</div>
+                    <div data-demo-html="true">
+                        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search... example: Adobe" class="ui-listview-inset" data-autodividers="true" data-filter-reveal="true" id="myList">
+                        </ul>
+                    </div>
+                </div><!-- /content-primary -->
+            </div><!-- /role main -->
+            <div data-role="footer">
+                <h1>Created by M.L.</h1>
+            </div>
 
-	</div>
+        </div><!-- / role page -->
+    </div><!--  /parent div -->
 
-	<div data-role="footer">
-	<h1>Footer for page two</h1>
-	</div>
-</div>
-
-</div>
-<script type="text/javascript">
-		$("button").click(function(){
- 
-    var inputValue = $("input:text").val();
-
-    $("#images").html("");
-
-	(function(){
-		var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-
-		$.getJSON( flickrAPI, {
-			tags: inputValue,
-			tagmode: "any",
-			format: "json"
-		})
-	
-	.done(function( data ) {
-		$.each( data.items, function( i, item ) {
-			$( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-			if ( i === 2) {
-				return false;
-			}
-		});
-	});
-	})();
-});
-</script>
-
+    <script src="js/app.js"></script>
 </body>
+
 </html>
