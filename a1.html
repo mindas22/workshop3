@@ -91,10 +91,10 @@ $.getJSON( urlForJSONfile, function( data ) {
 
 for (var i = 0; i < data.length;  i++) {
 
-$("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">' + data[i].Name + ' - ' + data[i].Domain + '</a></li>').listview('refresh');
+$("#myList").append('<li><a data-transition="slide" href="#' + data[i].Domain +'">' + data[i].Domain + '</a></li>').listview('refresh');
 
 			$("#parentDiv").append(
-			'<div data-role="page" id="' + data[i].Name + '">' +
+			'<div data-role="page" id="' + data[i].Domain + '">' +
 			'<div data-role="header" data-add-back-btn="true" data-back-btn-text="Go back">' + '<h1>' + data[i].Name + '</h1>' + '</div>' +
 			'<div role="main" class="ui-content">' +
 
@@ -105,7 +105,7 @@ $("#myList").append('<li><a data-transition="flip" href="#' + data[i].Name +'">'
 			'<p>' + data[i].Description + "</p>" +
 			'<p class="ui-mini"><strong>Compromised data: </strong>' + data[i].DataClasses + "</p></div>" +
 
-			'<div data-role="footer">' + '<h1>' + data[i].Name + '</h1></div>' +
+			'<div data-role="footer"><h1>Created by M.L.</h1></div>' +
 			'</div>');
 
 
