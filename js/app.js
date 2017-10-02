@@ -1,5 +1,5 @@
 $(document).ready(function() {
-console.log("let sta");
+
             //here could be other url for JSON feed
             // Credit: JSON file was created using  haveibeenpwned.com API and saved as local file
             var urlForJSONfile = "listofsites.json";
