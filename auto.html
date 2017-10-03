@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>autocomplete</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+</head>
+<body>
+	<div class="ui-widget">
+	<label for="tags">Tags: </label>
+	<input id="tags">
+	<div id="progressbar"></div>
+
+	<div><p>Date: <input type="text" id="datepicker"></p></div>
+
+	<div id="dateinfo">info</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		var availableTags = [
+		"Actionscript",
+		"javascript",
+		"Applescript",
+		"banascript",
+		"basic",
+		"ruby"
+		];
+		$( "#tags" ).autocomplete({
+			source: availableTags
+		});
+	});
+	  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+
+
+	  $( function() {
+    $( "#progressbar" ).progressbar({
+      value: 37
+    });
+  } );
+
+	  $("dateinfo").append($(progressbar))
+</script>
+</body>
+</html>
